@@ -1,0 +1,102 @@
+<!-- // Author: Nigel Finley. August 2016. UT Bootcamp Trivia Assisgnment -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GIPHY API</title>
+    <!--Link to reset css template -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!-- Bootstrap -->
+    <!-- Latest compiled and minified CSS -->
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <!-- Materialize Theme -->
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css" crossorigin="anonymous">
+    <!-- Your style sheet link -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <!-- Google Fonts -->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bungee|Russo+One" rel="stylesheet">
+    <!-- Font awesome CDN -->
+    <script src="https://use.fontawesome.com/9763ef17ba.js"></script>
+</head>
+
+<body>
+    <!--     <div id='wrap'> -->
+    <!-- Title Header -->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col s3">
+                    <div class="valign-wrapper">
+                        <img src="assets/images/giphy.gif" class="headerImage valign">
+                    </div>
+                </div>
+                <div class="col s6">
+                    <div class="valign-wrapper">
+                        <h1 class="center-align valign"> Celebrity Lookup </h1>
+                    </div>
+                </div>
+                <div class="input-field col s3">
+                    
+                            <label for="celeb-input">Choose Your Celebrity</label>
+                            <input type="text" id="celeb-input">
+                            <br>
+                            <!-- Button triggers new movie to be added -->
+                            <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">Add Your Celebrity</button>
+ 
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- TO HOUSE THE BUTTONS -->
+    <div class="container">
+        <div class="row">
+        <!-- Hard coded at first -->
+        
+            <div class="col s1 col m1 col l1">
+            <!-- For the buttons -->
+                <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">J Lo</button> </div>
+                 <div class="col s1 col m1 col l1">
+                <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">Brad</button>
+                </div>
+                 <div class="col s1 col m1 col l1">
+                <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">Jennifer</button></div>
+            
+                <!-- Dynamically update them to display and add class of col m1 to be in one column -->
+            </div>
+        </div>
+    </div>
+    <!-- A divider above where the images go -->
+    <!--  <div class="divider"></div> -->
+    <!--         <div id="push"> </div>
+    </div>
+    <div id="footer">
+    </div> -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script> -->
+    <!-- Latest compiled and minified JavaScript -->
+    <!--                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+    <!-- Materialize Jquery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <!-- Compiled and minified JavaScrip for Materialize -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+    <!-- link to user JS file. Name will change -->
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
+    <!-- link to js file that supports the backstretch piece -->
+    <script type="text/javascript" src="assets/javascript/javascript.js"></script>
+    <!-- Creates a background image that sizes -->
+   <!--  <script type="text/javascript">
+    $(document).ready(function() {
+        $.backstretch('assets/images/stardust.png');
+    });
+    </script> -->
+    <audio id="audioplayer"></audio>
+</body>
+
+</html>
