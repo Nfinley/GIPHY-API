@@ -5,6 +5,7 @@ font-family: 'Bungee', cursive;
 
 body { 
 	background-image: url("assets/images/stardust.png");
+	/*overflow-y: hidden;*/
 	 /*no-repeat cover cover; */
 
  }
@@ -14,6 +15,7 @@ h1 {
 	color: white;
 	margin-left: 20px;	
 	font-size: 40px;
+	text-align: center;
 }
 
 header {
@@ -22,11 +24,45 @@ header {
 	border-bottom: 2px solid grey;
 }
 
+nav { 
+	height: 92px;
+ }
 
-img {
-	height: 100px;
-	width: 200px;
+ label {
+ 	font-size: 20px;
+ 	font-weight: bolder;
+ }
 
+ input {
+ 	color: white;
+
+ }
+
+
+.buttons {
+	margin-left: 10px;
 }
 
+img {
+	height: 140px;
+	width: 300px;
+
+}
+.btn {
+	margin-left: 75px;
+}
+
+.side-nav.fixed {
+	background-color: #18181A;
+}
+
+
+/*This is the styling for the div container 'row' */
+.row {
+	margin-bottom: 0px;
+}
+
+.main {
+	height: 700px;
+}
 

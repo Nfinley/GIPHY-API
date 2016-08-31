@@ -26,51 +26,58 @@
 </head>
 
 <body>
-    <!--     <div id='wrap'> -->
-    <!-- Title Header -->
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="col s3">
-                    <div class="valign-wrapper">
-                        <img src="assets/images/giphy.gif" class="headerImage valign">
+    <header class="grey">
+        <nav class="top-nav teal orange darken-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 m9 l10 offset-m3 offset-l2">
+                        <div class="nav-wrapper">
+                            <h1 class="page-title">Celebrity Picker</h1>
+                        </div>
+
                     </div>
-                </div>
-                <div class="col s6">
-                    <div class="valign-wrapper">
-                        <h1 class="center-align valign"> Celebrity Lookup </h1>
-                    </div>
-                </div>
-                <div class="input-field col s3">
-                    
-                            <label for="celeb-input">Choose Your Celebrity</label>
-                            <input type="text" id="celeb-input">
-                            <br>
-                            <!-- Button triggers new movie to be added -->
-                            <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">Add Your Celebrity</button>
- 
                 </div>
             </div>
-        </div>
+        </nav>
+        <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
+        <ul id="nav-mobile" class="side-nav fixed">
+            <li class="logo">
+                <img id="logo-container" class="logo" src="assets/images/giphy.gif">
+            </li>
+            <!-- <li class="search">
+                <div class="search-wrapper card">
+                    <input id="search"><i class="material-icons">search</i>
+                    <div class="search-results"></div>
+                </div>
+            </li> -->
+            <li class=" padding bold" id="buttonsview">
+                <button class="waves-effect waves-light btn orange darken-1 z-depth-3">Button 1</button>
+            </li>
+            <li class=" padding bold">
+                <button class="waves-effect waves-light btn orange darken-1 z-depth-3">Button 2</button>
+            </li>
+        </ul>
     </header>
-    <!-- TO HOUSE THE BUTTONS -->
-    <div class="container">
+    <!-- For the header -->
+    <!-- Body contents -->
+    <main>
+        <div class="container">
         <div class="row">
-        <!-- Hard coded at first -->
-        
-            <div class="col s1 col m1 col l1">
-            <!-- For the buttons -->
-                <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">J Lo</button> </div>
-                 <div class="col s1 col m1 col l1">
-                <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">Brad</button>
-                </div>
-                 <div class="col s1 col m1 col l1">
-                <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">Jennifer</button></div>
-            
-                <!-- Dynamically update them to display and add class of col m1 to be in one column -->
+            <div class="col s12 m5 l5 "></div>
+            <div class="input-field col s12 m5 l5 ">
+                    <input id="addCeleb" type="text" class="validate">
+                    <label for="addCeleb">Choose Your Celebrity</label>
+                
+                <br> 
+                <!-- Button triggers new movie to be added -->
+                <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">Add Your Celebrity</button>
             </div>
+
+
+            <div class="col s12 m2 l2 "></div>
         </div>
-    </div>
+        </div>
+    </main>
     <!-- A divider above where the images go -->
     <!--  <div class="divider"></div> -->
     <!--         <div id="push"> </div>
@@ -91,11 +98,18 @@
     <!-- link to js file that supports the backstretch piece -->
     <script type="text/javascript" src="assets/javascript/javascript.js"></script>
     <!-- Creates a background image that sizes -->
-   <!--  <script type="text/javascript">
+    <script type="text/javascript">
     $(document).ready(function() {
         $.backstretch('assets/images/stardust.png');
     });
-    </script> -->
+    </script>
+    <script type="text/javascript">
+    $('.button-collapse').sideNav({
+        menuWidth: 300, // Default is 240
+        edge: 'left', // Choose the horizontal origin
+        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    });
+    </script>
     <audio id="audioplayer"></audio>
 </body>
 
