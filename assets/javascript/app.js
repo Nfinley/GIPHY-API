@@ -53,7 +53,7 @@ giphyObj = {
             // Then dynamicaly generates buttons for each movie in the array
 
             var buildButton = $('<button>'); // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
-            buildButton.attr('class', 'col s2 waves-effect waves-light btn orange darken-1 z-depth-3'); // Added a class 
+            buildButton.attr('class', 'col s2 waves-effect waves-light btn orange darken-1 z-depth-3 celeb'); // Added a class 
             buildButton.attr('data-name', this.topics[i]); // Added a data-attribute
             buildButton.text(this.topics[i]); // Provided the initial button text
             console.log("the button element: " + JSON.stringify(buildButton));
@@ -61,44 +61,114 @@ giphyObj = {
             // append the div to buttonsview
             $('#buttonsView').append(buildButton);
         }
-    }
+    },
+
+    displayCelebInfo: function() {
+
+    	var celeb = $(this).data('name');
+        var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + celeb + "&api_key=dc6zaTOxFJmzC&limit=12";
+
+        $.ajax({
+                url: queryURL,
+                method: 'GET'
+            })
+            .done(function(response) {
+                // step 1: Run this file, click a button, and see what the data looks like in the browser's console. Open up the Object, then open up the data key, then open up 0. Study the keys and how the JSON is structured.
+
+                console.log(response)
+
+                // step 2: since the image information is inside of the data key then make a variable named results and set it equal to response.data
+                
+                //------------put step 2 in between these dashes--------------------
+            var results = response.data; 
+                //--------------------------------
+            // var rating = results[i].rating;
+            // var ratingUpper = rating.Uppercase();
+
+                for (var i = 0; i < results.length; i++) {
+
+                	// creates the materialize 'card'
+                    var celebDiv = $('<div class="col s2 m3 l4"><div class="card"><div class="card-image"><img src=" ' + results[i].images.fixed_height_small_still.url + '" data-still=" '+ results[i].images.fixed_height_small_still.url+ '" data-animate=" ' + results[i].images.fixed_height_small.url + '"></div><div class="card-content"><p class="rate"> Rating: '  + results[i].rating + '</p></div></div></div>');
+
+                    // var p = $('<p>').text("Rating: " + results[i].rating);
+                    // // p = results[i].rating;
+                    // var celebImage = $('<img src=" ' + results[i].images.fixed_height.url + '">');
+                    // celebDiv.append(p);
+                    // celebDiv.append(celebImage);
+
+                    // p.html("Rating: " + results[i].rating);
+
+                    // This grabs the id and the puts our new div on the page
+                    $('#gifsAppearHere').prepend(celebDiv);
+
+			    }
+			});
+		}	
 
 
 }
 
-
+// PAGE LOAD AND RUN FUNCTIONS
 // ========================================================
 $(document).ready(function() {
-giphyObj.buildButtons();
+	// The buttons are not emptying
+	$('#buttonsview').empty();
+	giphyObj.buildButtons();
 
 // This function handles events where one button is clicked
-$('#addCeleb').on('click', function() {
+	$('#addCeleb').on('click', function() {
 
-    // This line of code will grab the input from the textbox
-    var celeb = $('#celeb-input').val().trim();
-    console.log("The input typed: " + celeb);
-    // The movie from the textbox is then added to our array
-    giphyObj.topics.push(celeb);
+	    // This line of code will grab the input from the textbox
+	    var celeb = $('#celeb-input').val().trim();
+	    console.log("The input typed: " + celeb);
+	    // The movie from the textbox is then added to our array
+	    giphyObj.topics.push(celeb);
 
-    // Our array then runs which handles the processing of our movie array
-    // giphyObj.buildButtons();
+	    // Our array then runs which handles the processing of our movie array
+	    giphyObj.buildButtons();
 
-    // We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
-    return false;
-})
+	    // We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
+	    return false;
+	});
+	var state = 'still';
+	$(document.body).on('click', '.card-image img', function() {
+		console.log("Picture Click: " + this);
+		
+		
 
-});
+		if (state === 'still'){
+			var animateUrl = $(this).attr('data-animate');
+			$(this).attr('src', animateUrl);
+			$(this).attr('data-state', 'animate');
+			console.log(state);
+
+
+		}
+		else {
+			var state = 'animate';
+			var animateUrl = $(this).attr('data-still');
+			$(this).attr('src', animateUrl);
+			$(this).attr('data-state', 'still');
+		}
+
+
+	});
+
+
 
 // // ========================================================
 
 // // Generic function for displaying the movieInfo
-// $(document).on('click', '.celeb', displayCelebInfo);
-
+	$(document).on('click', '.celeb', giphyObj.displayCelebInfo);
+		console.log(this);
 
 // // ========================================================
 
 // // This calls the renderButtons() function
-// renderButtons();
+	// giphyObj.buildButtons();
+
+
+});
 
 
 

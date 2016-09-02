@@ -46,15 +46,31 @@ button {
 }
 
 
-img {
+.headerImage {
 	height: 140px;
 	width: 300px;
 
 }
 
+img {
+	height: 250px;
+	width: 300px;
+
+}
+
+.rate {
+	text-transform: uppercase;
+}
+
 /*.center-align {
 	margin: auto auto;
 }*/
+
+
+/*@media only screen and (min-width: 993px)*/
+.container {
+	width: 90%;
+}
 
 
 /*For Side-nav project not used here*/
