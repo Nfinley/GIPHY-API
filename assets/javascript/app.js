@@ -88,7 +88,7 @@ giphyObj = {
                 for (var i = 0; i < results.length; i++) {
 
                 	// creates the materialize 'card'
-                    var celebDiv = $('<div class="col s2 m3 l4"><div class="card"><div class="card-image"><img src=" ' + results[i].images.fixed_height_small_still.url + '" data-still=" '+ results[i].images.fixed_height_small_still.url+ '" data-animate=" ' + results[i].images.fixed_height_small.url + '"></div><div class="card-content"><p class="rate"> Rating: '  + results[i].rating + '</p></div></div></div>');
+                    var celebDiv = $('<div class="col s2 m3 l3"><div class="card"><div class="card-image"><img src="'+ results[i].images.fixed_height_small_still.url + '" data-still="'+ results[i].images.fixed_height_small_still.url+ '" data-animate="'+ results[i].images.fixed_height_small.url +'" data-state="still"></div><div class="card-content"><p class="rate"> Rating: '  + results[i].rating + '</p></div></div></div>');
 
                     // var p = $('<p>').text("Rating: " + results[i].rating);
                     // // p = results[i].rating;
@@ -130,12 +130,12 @@ $(document).ready(function() {
 	    // We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
 	    return false;
 	});
-	var state = 'still';
+	
 	$(document.body).on('click', '.card-image img', function() {
 		console.log("Picture Click: " + this);
 		
 		
-
+		var state = $(this).attr('data-state');
 		if (state === 'still'){
 			var animateUrl = $(this).attr('data-animate');
 			$(this).attr('src', animateUrl);
@@ -145,7 +145,6 @@ $(document).ready(function() {
 
 		}
 		else {
-			var state = 'animate';
 			var animateUrl = $(this).attr('data-still');
 			$(this).attr('src', animateUrl);
 			$(this).attr('data-state', 'still');
