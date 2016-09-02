@@ -24,6 +24,9 @@
 // Variables
 giphyObj = {
     topics: [
+    	"Michael Jackson", 
+    	"Rolling Stones",
+    	"Prince",
     	"Coldplay", 
     	"The Beatles", 
     	"Beyonce", 
@@ -32,10 +35,7 @@ giphyObj = {
     	"Taylor Swift", 
     	"Justin Bieber",
     	"Jennifer Lopez",
-    	"Mariah Carey",
-    	"Power Rangers", 
-    	"Rolling Stones",
-    	"Selena Gomez"
+    	"Mariah Carey"
     	],
 
 
@@ -46,7 +46,7 @@ giphyObj = {
         // Deletes the movies prior to adding new movies (this is necessary otherwise you will have repeat buttons)
         
         // Figure out what id I need to target
-        $('#buttonsview').empty();
+        $('#buttonsView').empty();
         // Loops through the array of movies
         for (var i = 0; i < this.topics.length; i++) {
         	console.log("This is the topics object: " + this.topics);
@@ -84,7 +84,7 @@ giphyObj = {
                 //--------------------------------
             // var rating = results[i].rating;
             // var ratingUpper = rating.Uppercase();
-
+            $('#gifsAppearHere').empty();
                 for (var i = 0; i < results.length; i++) {
 
                 	// creates the materialize 'card'
@@ -111,9 +111,7 @@ giphyObj = {
 // PAGE LOAD AND RUN FUNCTIONS
 // ========================================================
 $(document).ready(function() {
-	// The buttons are not emptying
-	$('#buttonsview').empty();
-	giphyObj.buildButtons();
+	
 
 // This function handles events where one button is clicked
 	$('#addCeleb').on('click', function() {
@@ -124,7 +122,7 @@ $(document).ready(function() {
 	    // The movie from the textbox is then added to our array
 	    giphyObj.topics.push(celeb);
 
-	    // Our array then runs which handles the processing of our movie array
+	    // This function put the button just created on the page
 	    giphyObj.buildButtons();
 
 	    // We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
@@ -164,8 +162,9 @@ $(document).ready(function() {
 
 // // ========================================================
 
-// // This calls the renderButtons() function
-	// giphyObj.buildButtons();
+// The buttons are not emptying
+	$('#buttonsView').empty();
+	giphyObj.buildButtons();
 
 
 });
