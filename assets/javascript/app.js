@@ -130,6 +130,11 @@ $(document).ready(function() {
 	    // We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
 	    return false;
 	});
+	// // ========================================================
+
+// // Generic function for displaying the movieInfo
+	$(document).on('click', '.celeb', giphyObj.displayCelebInfo);
+		console.log(this);
 	
 	$(document.body).on('click', '.card-image img', function() {
 		console.log("Picture Click: " + this);
@@ -155,11 +160,7 @@ $(document).ready(function() {
 
 
 
-// // ========================================================
 
-// // Generic function for displaying the movieInfo
-	$(document).on('click', '.celeb', giphyObj.displayCelebInfo);
-		console.log(this);
 
 // // ========================================================
 
