@@ -28,18 +28,18 @@ giphyObj = {
     	"The Beatles", 
     	"Beyonce", 
     	"Miley Cyrus", 
-    	"Kim Kardashian", 
-    	"Angelina Jolie", 
-    	"Justin Bieber", 
+    	"Drake",
     	"Taylor Swift", 
-    	"Drake", 
-    	"Brad Pitt", 
-    	"George Clooney", 
-    	"Mariah Carey", 
-    	"Jennifer Aniston", 
-    	"Power Rangers"],
+    	"Justin Bieber",
+    	"Jennifer Lopez",
+    	"Mariah Carey",
+    	"Power Rangers", 
+    	"Rolling Stones",
+    	"Selena Gomez"
+    	],
 
 
+	 
     // Functions
     buildButtons: function() {
 
@@ -47,22 +47,19 @@ giphyObj = {
         
         // Figure out what id I need to target
         $('#buttonsview').empty();
-
         // Loops through the array of movies
         for (var i = 0; i < this.topics.length; i++) {
-
+        	console.log("This is the topics object: " + this.topics);
             // Then dynamicaly generates buttons for each movie in the array
 
-            // Note the jQUery syntax here... 
-            var li = $('<li>');
-            li.addClass('padding-bold').addId('buttonsview');
-
             var buildButton = $('<button>'); // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
-            buildButton.addClass('waves-effect waves-light btn orange darken-1 z-depth-3'); // Added a class 
+            buildButton.attr('class', 'col s2 waves-effect waves-light btn orange darken-1 z-depth-3'); // Added a class 
             buildButton.attr('data-name', this.topics[i]); // Added a data-attribute
-            buildButton.text(this.movies[i]); // Provided the initial button text
+            buildButton.text(this.topics[i]); // Provided the initial button text
+            console.log("the button element: " + JSON.stringify(buildButton));
 
-            $('#nav-mobile').append(li); // Added the li to the ul element
+            // append the div to buttonsview
+            $('#buttonsView').append(buildButton);
         }
     }
 
@@ -71,30 +68,38 @@ giphyObj = {
 
 
 // ========================================================
+$(document).ready(function() {
+giphyObj.buildButtons();
 
 // This function handles events where one button is clicked
 $('#addCeleb').on('click', function() {
 
     // This line of code will grab the input from the textbox
     var celeb = $('#celeb-input').val().trim();
-    console.log(celeb);
+    console.log("The input typed: " + celeb);
     // The movie from the textbox is then added to our array
     giphyObj.topics.push(celeb);
 
     // Our array then runs which handles the processing of our movie array
-    renderButtons();
+    // giphyObj.buildButtons();
 
     // We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
     return false;
 })
 
-// ========================================================
+});
 
-// Generic function for displaying the movieInfo
-$(document).on('click', '.movie', displayMovieInfo);
+// // ========================================================
+
+// // Generic function for displaying the movieInfo
+// $(document).on('click', '.celeb', displayCelebInfo);
 
 
-// ========================================================
+// // ========================================================
 
-// This calls the renderButtons() function
-renderButtons();
+// // This calls the renderButtons() function
+// renderButtons();
+
+
+
+

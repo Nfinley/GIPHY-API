@@ -20,7 +20,7 @@ h1 {
 
 header {
 	background-color: #18181A;
-	margin-bottom: -20px;
+	/*margin-bottom: -20px;*/
 	border-bottom: 2px solid grey;
 }
 
@@ -38,16 +38,30 @@ nav {
 
  }
 
+button {
+	margin-top: 8px;
+	padding-right: 10px;
+	text-align: center;
 
-.buttons {
-	margin-left: 10px;
 }
+
 
 img {
 	height: 140px;
 	width: 300px;
 
 }
+
+/*.center-align {
+	margin: auto auto;
+}*/
+
+
+/*For Side-nav project not used here*/
+/*.buttons {
+	margin-left: 10px;
+}
+
 .btn {
 	margin-left: 75px;
 }
@@ -57,12 +71,11 @@ img {
 }
 
 
-/*This is the styling for the div container 'row' */
 .row {
 	margin-bottom: 0px;
 }
 
 .main {
 	height: 700px;
-}
+}*/
 
