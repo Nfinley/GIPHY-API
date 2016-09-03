@@ -69,24 +69,25 @@ giphyObj = {
             	// Empties the buttons view  before adding a new buttons
             	$('#gifsAppearHere').empty();
 
+                // NOT USING THE UNDERSCORE LIBRARY
             	// Loops through array and prints out all items to the screen
-                for (var i = 0; i < results.length; i++) {
+       //          for (var i = 0; i < results.length; i++) {
 
-                	// creates the materialize 'card'
-                    var starDiv = $('<div class="col s12 m4 l3"><div class="card"><div class="card-image"><img src="'+ results[i].images.fixed_height_small_still.url + '" data-still="'+ results[i].images.fixed_height_small_still.url+ '" data-animate="'+ results[i].images.fixed_height_small.url +'" data-state="still"></div><div class="card-content"><p class="rate"> Rating: '  + results[i].rating + '</p></div></div></div>');
-                    // Writes the card to the page
-                    $('#gifsAppearHere').prepend(starDiv);
+       //          	// creates the materialize 'card'
+       //              var starDiv = $('<div class="col s12 m4 l3"><div class="card"><div class="card-image"><img src="'+ results[i].images.fixed_height_small_still.url + '" data-still="'+ results[i].images.fixed_height_small_still.url+ '" data-animate="'+ results[i].images.fixed_height_small.url +'" data-state="still"></div><div class="card-content"><p class="rate"> Rating: '  + results[i].rating + '</p></div></div></div>');
+       //              // Writes the card to the page
+       //              $('#gifsAppearHere').prepend(starDiv);
 
-			    }
+			    // }
 
-			    // Trying to use Underscore.js and template the image changes. 
-			    // var $gifs = $('#gifsAppearHere');
-			    // // Targeting the underscore template housed in the html
-			    // var $giphyTemplate = _.template($('#giphyTmpl').html());
-			    // // for each loop similar to that used in Star wars game
-			    // giphyObj.topics.forEach(function(results) {
-       //      		$gifs.html($giphyTemplate({results: results }));
-       //  		});
+			    // using Underscore.js and template the image changes. 
+			    var $gifs = $('#gifsAppearHere');
+			    // Targeting the underscore template housed in the html
+			    var $giphyTemplate = _.template($('#giphyTmpl').html());
+			    // for each loop similar to that used in Star wars game
+			    results.forEach(function(result) {
+            		$gifs.prepend($giphyTemplate({result: result }));
+        		});
 
 
 			});

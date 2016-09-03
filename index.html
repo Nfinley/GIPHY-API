@@ -80,7 +80,6 @@
         </div> -->
     </div>
 
-<!-- data-star-index="<%= index %>" -->
 <!-- ===========END OF HTML CONTENT =================== -->
 
 <!-- Templating, still working on this piece -->
@@ -88,9 +87,9 @@
             <div class="col s12 m4 l3">
                 <div class="card">
                     <div class="card-image">
-                        <img src="<%= results.images.fixed_height_small_still.url %>" data-still="<%= results.images.fixed_height_small_still.url %>" data-animate="<%= results.images.fixed_height_small.url %>" data-state="still">
+                        <img src="<%= result.images.fixed_height_small_still.url %>" data-still="<%= result.images.fixed_height_small_still.url %>" data-animate="<%= result.images.fixed_height_small.url %>" data-state="still">
                     </div>
-                    <div class="card-content"><p class="rate"> Rating: <%= results.rating %></p>
+                    <div class="card-content"><p class="rate"> Rating: <%= result.rating %></p>
                     </div>
                 </div>
             </div>
@@ -103,7 +102,7 @@
     <!-- underscore JS library CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
 
-    <!-- link to user JS file. Name will change -->
+    <!-- link to user JS file. -->
     <script type="text/javascript" src="assets/javascript/app.js"></script>
 
     <!-- link to js file that supports the backstretch piece -->

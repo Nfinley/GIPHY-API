@@ -44,25 +44,25 @@ button {
 .headerImage {
 	height: 140px;
 	width: 300px;
-	margin-left: 40px;
+	/*margin-left: 40px;*/
 	/*transition: all .5s linear;
 	margin-left: 80px;*/
 
 }
 
-/*@keyframes myanimation
+@keyframes myanimation
 {
-    from {
-        left: 0;
+    0%, 50% {
+        margin-left: -500px;
     }
-    to {
-        left: 80%;
+    100% {
+        margin-left: 0px;
     }
 }
 
 #image {
-	animation: myanimation 5s; 
-}*/
+	animation: myanimation 2000ms ease; 
+}
 
 img {
 	height: 250px;
