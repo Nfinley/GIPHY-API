@@ -3,12 +3,6 @@ font-family: 'Bungee', cursive;
 
 */
 
-body { 
-	/*background-image: url("assets/images/stardust.png");*/
-	/*overflow-y: hidden;*/
-	 /*no-repeat cover cover; */
-
- }
 
 h1 {
 	font-family: 'Russo One', sans-serif;
@@ -50,8 +44,25 @@ button {
 .headerImage {
 	height: 140px;
 	width: 300px;
+	margin-left: 40px;
+	/*transition: all .5s linear;
+	margin-left: 80px;*/
 
 }
+
+/*@keyframes myanimation
+{
+    from {
+        left: 0;
+    }
+    to {
+        left: 80%;
+    }
+}
+
+#image {
+	animation: myanimation 5s; 
+}*/
 
 img {
 	height: 250px;
@@ -63,18 +74,12 @@ img {
 	text-transform: uppercase;
 }
 
-/*.center-align {
-	margin: auto auto;
-}*/
-
-
-/*@media only screen and (min-width: 993px)*/
 .container {
 	width: 90%;
 }
 
 
-/*For Side-nav project not used here*/
+/*For Side-nav  bar not used currently */
 /*.buttons {
 	margin-left: 10px;
 }

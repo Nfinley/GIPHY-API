@@ -7,11 +7,6 @@
 */
 
 
-// TO DO: 
-// 1. Animate the Gipy header image to come in on load
-// 2. put the card divs into templating
-
-
 // Variables
 giphyObj = {
     topics: [
@@ -41,8 +36,8 @@ giphyObj = {
         // Loops through the array of movies
         for (var i = 0; i < this.topics.length; i++) {
         	console.log("This is the topics object: " + this.topics);
-            // Then dynamicaly generates buttons for each movie in the array
 
+            // Then dynamicaly generates buttons for each movie in the array
             var buildButton = $('<button>'); // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
             buildButton.attr('class', 'col s6 m3 l2 waves-effect waves-light btn orange darken-1 z-depth-3 star'); // Added a class 
             buildButton.attr('data-name', this.topics[i]); // Added a data-attribute
@@ -55,44 +50,45 @@ giphyObj = {
     },
 
     displayStarInfo: function() {
-
+    	// API DATA
     	var star = $(this).data('name');
         var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + star + "&api_key=dc6zaTOxFJmzC&limit=12";
 
+        // Ajax call that pulls the data from the api
         $.ajax({
                 url: queryURL,
                 method: 'GET'
             })
             .done(function(response) {
-                // step 1: Run this file, click a button, and see what the data looks like in the browser's console. Open up the Object, then open up the data key, then open up 0. Study the keys and how the JSON is structured.
+            	// Logs entire response
+                console.log("This is the API response: " + JSON.stringify(response));
 
-                console.log(response)
+            	//Sets the variable results = the entire data set coming from the API
+            	var results = response.data; 
 
-                // step 2: since the image information is inside of the data key then make a variable named results and set it equal to response.data
-                
-                //------------put step 2 in between these dashes--------------------
-            var results = response.data; 
-                //--------------------------------
-            // var rating = results[i].rating;
-            // var ratingUpper = rating.Uppercase();
-            $('#gifsAppearHere').empty();
+            	// Empties the buttons view  before adding a new buttons
+            	$('#gifsAppearHere').empty();
+
+            	// Loops through array and prints out all items to the screen
                 for (var i = 0; i < results.length; i++) {
 
                 	// creates the materialize 'card'
                     var starDiv = $('<div class="col s12 m4 l3"><div class="card"><div class="card-image"><img src="'+ results[i].images.fixed_height_small_still.url + '" data-still="'+ results[i].images.fixed_height_small_still.url+ '" data-animate="'+ results[i].images.fixed_height_small.url +'" data-state="still"></div><div class="card-content"><p class="rate"> Rating: '  + results[i].rating + '</p></div></div></div>');
-
-                    // var p = $('<p>').text("Rating: " + results[i].rating);
-                    // // p = results[i].rating;
-                    // var starImage = $('<img src=" ' + results[i].images.fixed_height.url + '">');
-                    // starDiv.append(p);
-                    // starDiv.append(starImage);
-
-                    // p.html("Rating: " + results[i].rating);
-
-                    // This grabs the id and the puts our new div on the page
+                    // Writes the card to the page
                     $('#gifsAppearHere').prepend(starDiv);
 
 			    }
+
+			    // Trying to use Underscore.js and template the image changes. 
+			    // var $gifs = $('#gifsAppearHere');
+			    // // Targeting the underscore template housed in the html
+			    // var $giphyTemplate = _.template($('#giphyTmpl').html());
+			    // // for each loop similar to that used in Star wars game
+			    // giphyObj.topics.forEach(function(results) {
+       //      		$gifs.html($giphyTemplate({results: results }));
+       //  		});
+
+
 			});
 		}	
 
@@ -106,30 +102,36 @@ $(document).ready(function() {
 
 // This function handles events where one button is clicked
 	$('#addStar').on('click', function() {
+	// 	$('.headerImage').css({
+	// 	position:'absolute', top:0, left: 80
+	// });
 
 	    // This line of code will grab the input from the textbox
 	    var star = $('#star-input').val().trim();
 	    console.log("The input typed: " + star);
-	    // The movie from the textbox is then added to our array
+	    // the star chosen is pushed to the topics array
 	    giphyObj.topics.push(star);
 
-	    // This function put the button just created on the page
+	    // This function puts the button just created on the page
 	    giphyObj.buildButtons();
 
-	    // We have this line so that users can hit "enter" instead of clicking on ht button and it won't move to the next page
 	    return false;
 	});
-	// // ========================================================
 
-// // Generic function for displaying the movieInfo
+	// DISPLAY THE STAR INFO ON THE PAGE AFTER USER CLICK
+	// ========================================================
+
+	// Generic function for displaying the star info
 	$(document).on('click', '.star', giphyObj.displayStarInfo);
 		console.log(this);
 	
+	// This handles the animation of the GIF. From the still state to the animate state depending on the current state
 	$(document.body).on('click', '.card-image img', function() {
 		console.log("Picture Click: " + this);
 		
 		
 		var state = $(this).attr('data-state');
+		// changes the state to animated
 		if (state === 'still'){
 			var animateUrl = $(this).attr('data-animate');
 			$(this).attr('src', animateUrl);
@@ -138,6 +140,7 @@ $(document).ready(function() {
 
 
 		}
+		// changes stage back to sill if currently animated
 		else {
 			var animateUrl = $(this).attr('data-still');
 			$(this).attr('src', animateUrl);
@@ -147,13 +150,8 @@ $(document).ready(function() {
 
 	});
 
-
-
-
-
-// // ========================================================
-
-// The buttons are not emptying
+// ========================================================
+	// Final page empty and rebuild
 	$('#buttonsView').empty();
 	giphyObj.buildButtons();
 
