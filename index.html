@@ -26,26 +26,29 @@
 </head>
 
 <body>
+
+<!-- ===========START  OF HTML CONTENT =================== -->
+
     <!-- With no side nav for now just to get the app working -->
     <header>
         <div class="container">
             <div class="row">
-                <div class="col s3">
+                <div class="col s12 m3 l4">
                     <div class="valign-wrapper">
                         <img src="assets/images/giphy.gif" class="headerImage valign">
                     </div>
                 </div>
-                <div class="col s6">
+                <div class="col s12 m6 l4">
                     <div class="valign-wrapper">
                         <h1 class="center-align valign"> RockStar Lookup </h1>
                     </div>
                 </div>
-                <div class="input-field col s3">
-                    <label for="celeb-input">Choose Your Star</label>
-                    <input type="text" id="celeb-input">
+                <div class="input-field col s12 m3 l4">
+                    <label for="star-input">Choose Your Star</label>
+                    <input type="text" id="star-input">
                     <br>
                     <!-- Button triggers new movie to be added -->
-                    <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addCeleb" type="button" value="Add Your Celebrity">Add Your Star</button>
+                    <button class="waves-effect waves-light btn orange darken-1 z-depth-5" id="addStar" type="button" value="Add Your Celebrity">Add Your Star</button>
                 </div>
             </div>
         </div>
@@ -57,11 +60,11 @@
             <!-- Dynamically update them to display and add class of col m1 to be in one column -->
             <!-- <div class="col s1 col m1 col l1">
         
-                <button class="waves-effect waves-light btn orange darken-1 z-depth-5 celeb" data-name="Jennifer Lopez" >J Lo</button>
+                <button class="waves-effect waves-light btn orange darken-1 z-depth-5 star" data-name="Jennifer Lopez" >J Lo</button>
             </div>
            
             <div class="col s1 col m1 col l1">
-                <button class="waves-effect waves-light btn orange darken-1 z-depth-5 celeb" data-name="Jennifer Aniston">Jennifer Aniston</button>
+                <button class="waves-effect waves-light btn orange darken-1 z-depth-5 star" data-name="Jennifer Aniston">Jennifer Aniston</button>
             </div> -->
         </div>
          <!-- A divider above where the images go -->
@@ -69,6 +72,7 @@
     </div>
    <!-- WHERE THE IMAGES WILL RENDER -->
   <div class="row bodyPic" id="gifsAppearHere">
+  <!-- Hardcoded this type of html to be dynamically updated -->
        <!--  <div class="col s2 m3 l4">
           <div class="card">
             <div class="card-image">
@@ -81,21 +85,16 @@
         </div> -->
     </div>
 
+<!-- ===========END OF HTML CONTENT =================== -->
 
+      <script type="text/template" id="characterTmpl">
+        <div class="characterContainer characterClick <%= background %>" data-character-index="<%= index %>">
+            <p><%= character.name %></p>
+            <img src="<%= character.visual %>">
+            <p>HP: <%= character.healthPoints %></p>
+        </div>
+    </script>
 
-
-
-
-
-
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!--   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
-    </script> -->
-    <!-- Latest compiled and minified JavaScript -->
-    <!--                     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-    <!-- Materialize Jquery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <!-- Compiled and minified JavaScrip for Materialize -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
@@ -112,13 +111,7 @@
         $.backstretch('assets/images/stardust.png');
     });
     </script>
-    <script type="text/javascript">
-    $('.button-collapse').sideNav({
-        menuWidth: 300, // Default is 240
-        edge: 'left', // Choose the horizontal origin
-        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-    });
-    </script>
+
     <audio id="audioplayer"></audio>
 </body>
 

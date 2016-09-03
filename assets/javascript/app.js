@@ -1,24 +1,15 @@
 // Author: Nigel Finley. August 2016. UT Bootcamp GIPHY API Assisgnment
 
-// Instructions
+/*This app  uses GIPHY's API to take seach strings and pull gifs from their database and then it is displayed on the page. 
+ Additionally when you click on an image it annimates and when you click it again it will stop. Users can add their own buttons 
+ by entering a name in the 'choose your star' field and then selecting 'Add your star'.
 
-// Before you can make any part of our site work, you need to create an array of strings, each one related to a topic that interests you. Save it to a variable called topics.
+*/
 
-// We chose animals for our theme, but you can make a list to your own liking.
-// Your app should take the topics in this array and create buttons in your HTML.
 
-// Try using a loop that appends a button for each string in the array.
-// When the user clicks on a button, the page should grab 10 static, non-animated gif images from the GIPHY API and place them on the page.
-
-// When the user clicks one of the still GIPHY images, the gif should animate. If the user clicks the gif again, it should stop playing.
-
-// Under every gif, display its rating (PG, G, so on).
-
-// This data is provided by the GIPHY API.
-// Only once you get images displaying with button presses should you move on to the next step.
-// Add a form to your page takes the value from a user input box and adds it into your topics array. Then make a function call that takes each topic in the array remakes the buttons on the page.
-
-// Rejoice! You just made something really cool.
+// TO DO: 
+// 1. Animate the Gipy header image to come in on load
+// 2. put the card divs into templating
 
 
 // Variables
@@ -53,7 +44,7 @@ giphyObj = {
             // Then dynamicaly generates buttons for each movie in the array
 
             var buildButton = $('<button>'); // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
-            buildButton.attr('class', 'col s2 waves-effect waves-light btn orange darken-1 z-depth-3 celeb'); // Added a class 
+            buildButton.attr('class', 'col s6 m3 l2 waves-effect waves-light btn orange darken-1 z-depth-3 star'); // Added a class 
             buildButton.attr('data-name', this.topics[i]); // Added a data-attribute
             buildButton.text(this.topics[i]); // Provided the initial button text
             console.log("the button element: " + JSON.stringify(buildButton));
@@ -63,10 +54,10 @@ giphyObj = {
         }
     },
 
-    displayCelebInfo: function() {
+    displayStarInfo: function() {
 
-    	var celeb = $(this).data('name');
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + celeb + "&api_key=dc6zaTOxFJmzC&limit=12";
+    	var star = $(this).data('name');
+        var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + star + "&api_key=dc6zaTOxFJmzC&limit=12";
 
         $.ajax({
                 url: queryURL,
@@ -88,18 +79,18 @@ giphyObj = {
                 for (var i = 0; i < results.length; i++) {
 
                 	// creates the materialize 'card'
-                    var celebDiv = $('<div class="col s2 m3 l3"><div class="card"><div class="card-image"><img src="'+ results[i].images.fixed_height_small_still.url + '" data-still="'+ results[i].images.fixed_height_small_still.url+ '" data-animate="'+ results[i].images.fixed_height_small.url +'" data-state="still"></div><div class="card-content"><p class="rate"> Rating: '  + results[i].rating + '</p></div></div></div>');
+                    var starDiv = $('<div class="col s12 m4 l3"><div class="card"><div class="card-image"><img src="'+ results[i].images.fixed_height_small_still.url + '" data-still="'+ results[i].images.fixed_height_small_still.url+ '" data-animate="'+ results[i].images.fixed_height_small.url +'" data-state="still"></div><div class="card-content"><p class="rate"> Rating: '  + results[i].rating + '</p></div></div></div>');
 
                     // var p = $('<p>').text("Rating: " + results[i].rating);
                     // // p = results[i].rating;
-                    // var celebImage = $('<img src=" ' + results[i].images.fixed_height.url + '">');
-                    // celebDiv.append(p);
-                    // celebDiv.append(celebImage);
+                    // var starImage = $('<img src=" ' + results[i].images.fixed_height.url + '">');
+                    // starDiv.append(p);
+                    // starDiv.append(starImage);
 
                     // p.html("Rating: " + results[i].rating);
 
                     // This grabs the id and the puts our new div on the page
-                    $('#gifsAppearHere').prepend(celebDiv);
+                    $('#gifsAppearHere').prepend(starDiv);
 
 			    }
 			});
@@ -114,13 +105,13 @@ $(document).ready(function() {
 	
 
 // This function handles events where one button is clicked
-	$('#addCeleb').on('click', function() {
+	$('#addStar').on('click', function() {
 
 	    // This line of code will grab the input from the textbox
-	    var celeb = $('#celeb-input').val().trim();
-	    console.log("The input typed: " + celeb);
+	    var star = $('#star-input').val().trim();
+	    console.log("The input typed: " + star);
 	    // The movie from the textbox is then added to our array
-	    giphyObj.topics.push(celeb);
+	    giphyObj.topics.push(star);
 
 	    // This function put the button just created on the page
 	    giphyObj.buildButtons();
@@ -131,7 +122,7 @@ $(document).ready(function() {
 	// // ========================================================
 
 // // Generic function for displaying the movieInfo
-	$(document).on('click', '.celeb', giphyObj.displayCelebInfo);
+	$(document).on('click', '.star', giphyObj.displayStarInfo);
 		console.log(this);
 	
 	$(document.body).on('click', '.card-image img', function() {
